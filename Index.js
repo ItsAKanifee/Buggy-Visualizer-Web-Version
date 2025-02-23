@@ -42,7 +42,6 @@ function start(){
 
 	let i = 0;
 	animate(i);
-	
 }
 
 function animate(i){
