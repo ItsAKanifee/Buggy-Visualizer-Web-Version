@@ -76,5 +76,9 @@ class Buggy{
         return this.points.length;
     }
 
+    setColor(color){
+        this.color = color;
+    }
+
     
 }

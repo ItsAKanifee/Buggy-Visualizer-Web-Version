@@ -23,10 +23,47 @@
 
         <br>
         <button id="start" onclick="start()">Start</button>
-        <input type="file" id="csvFile1" accept=".csv">
-        <input type="file" id="csvFile2" accept=".csv">
+
+        <br>
+        <div class = "container">
+            <div class = "Buggy" id = "Buggy1">
+
+                <label for="csvFile1">Choose which Rolls Data You Would Like to Visualize</label>
+                <input type="file" id="csvFile1" accept=".csv">
+                
+                <label for="color1">Choose a Color</label>
+                <select id="color1">
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="purple">Purple</option>
+                    <option value="orange">Orange</option>
+                </select>
+    
+            </div>
+            
+            <div class="Buggy" id = "Buggy2">
+
+                <label for="csvFile2">Choose which Rolls Data You Would Like to Visualize</label>
+                <input type="file" id="csvFile2" accept=".csv">
+
+                <label for="color2">Choose a Color</label>
+                <select id="color2">
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="purple">Purple</option>
+                    <option value="orange">Orange</option>
+                </select>
+
+            </div>
+        </div>
         
-        <script src = "Buggy.js" async defer></script>
+        
+        
+        <script src = "Buggy.js" async defer></script> 
         <script src="Index.js" async defer></script>
     </body>
 </html>
