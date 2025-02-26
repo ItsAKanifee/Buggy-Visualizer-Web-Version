@@ -14,23 +14,24 @@ function loadBackground(){
 	ctx.drawImage(background, 0, 0);
 }
 
-const color1 = document.getElementById("color1");
-const color2 = document.getElementById("color2");
-
-var Buggy1 = new Buggy(1, 'blue');
-var Buggy2 = new Buggy(2, 'red');
+var Buggy1 = new Buggy(1);
+var Buggy2 = new Buggy(2);
 
 
-color1.addEventListener('change', (event) => {
-	Buggy1.setColor(event.target.value);
+var speed = 1;
+
+const rate = document.getElementById("speed");
+rate.addEventListener('input', (event) => {
+	speed = 20 / event.target.value;
 });
 
-color2.addEventListener('change', (event) => {
-	Buggy2.setColor(event.target.value);
-});
 
+var i = 0;
+var frame;
 
 function start(){
+	i = 0;
+
 	if(Buggy1.length() == 0 && Buggy2.length() == 0){
 		console.log("no data");
 		return;
@@ -40,11 +41,10 @@ function start(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clears the canvas before drawing the buggy
     ctx.drawImage(background, 0, 0); // draws the background image on the canvas
 
-	let i = 0;
-	animate(i);
+	frame = requestAnimationFrame(animate());
 }
 
-function animate(i){
+function animate(){
 	console.log(i);
 
 	if(i < Buggy1.length()){
@@ -62,8 +62,8 @@ function animate(i){
 	i++;
 
 	setTimeout(() => {
-		requestAnimationFrame(animate(i));
-	  }, 8); // Add a 8ms delay
+		requestAnimationFrame(animate());
+	  }, 8 * speed); // Add a 8ms delay
 
 }
 

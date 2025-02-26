@@ -22,7 +22,15 @@
         <canvas id="canvas" height="780" width="1235"></canvas>
 
         <br>
-        <button id="start" onclick="start()">Start</button>
+        <div class = "container">
+            <button id="start" onclick="start()">Start</button>
+            <div id = "slider">
+                <label for="speed">Speed</label>
+                <input type="range" id="speed" min="1" max="50" value="20">
+            </div>
+            <button id="stop" onclick="stop()">Stop</button>
+        </div>
+        
 
         <br>
         <div class = "container">

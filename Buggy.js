@@ -1,11 +1,18 @@
 class Buggy{
-    constructor(num, color){ // takes the number of the buggy as an input (as in buggy 1, buggy 2, etc.)
-        this.color = color; // sets the color of the buggy
+    constructor(num){ // takes the number of the buggy as an input (as in buggy 1, buggy 2, etc.)
 
         let columns = {}; // stores the data from the csv file
         this.points = []; // stores the points to be read in the animation
         
         // generates the csv file which the buggy will use to get its data
+
+        this.colorInput = document.getElementById(`color${num}`); // gets the color input for the buggy
+        
+        this.colorInput.addEventListener('change', (event) => { // creates an event listener for the color input that is tied to the buggy
+            this.color = event.target.value; // sets the color of the buggy to the value of the color input
+        });
+
+        this.color = this.colorInput.value; // sets the color of the buggy to the value of the color input
         
         this.fileInput = document.getElementById(`csvFile${num}`);
         console.log(`csvFile${num}`);
