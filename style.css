@@ -53,6 +53,15 @@ button {
     font-weight: bold;
 }
 
+button:hover {
+    background-color: gray;
+    color: white;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
 select {
     background-color: white;
     color: black;
@@ -62,6 +71,11 @@ select {
     cursor: pointer;
     font-weight: bold;
     text-align: center;
+}
+
+select:hover {
+    background-color: gray;
+    color: white;
 }
 
 option {
