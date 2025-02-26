@@ -17,17 +17,19 @@ function loadBackground(){
 var Buggy1 = new Buggy(1);
 var Buggy2 = new Buggy(2);
 
-
-var speed = 1;
-
 const rate = document.getElementById("speed");
+
+var speed = 20/rate.value;
+
 rate.addEventListener('input', (event) => {
 	speed = 20 / event.target.value;
 });
 
+const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
 
-var i = 0;
-var frame;
+var pause = false;
+var i;
 
 function start(){
 	i = 0;
@@ -41,7 +43,7 @@ function start(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clears the canvas before drawing the buggy
     ctx.drawImage(background, 0, 0); // draws the background image on the canvas
 
-	frame = requestAnimationFrame(animate());
+	animate();
 }
 
 function animate(){
@@ -56,15 +58,22 @@ function animate(){
 	}
 
 	if(i >= Buggy1.length() && i >= Buggy2.length()){
+		i = 0;
 		return;
 	}
 
-	i++;
+	if(!pause){
+		i++;
+	}
+	
+	setTimeout(animate, 8 * speed);
 
-	setTimeout(() => {
-		requestAnimationFrame(animate());
-	  }, 8 * speed); // Add a 8ms delay
+}
 
+function stop(){
+	//cancelAnimationFrame(frame);
+	pause = !pause;
+	stopButton.innerHTML = pause ? "Resume" : "Pause";
 }
 
 
