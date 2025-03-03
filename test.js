@@ -1,4 +1,4 @@
-// This is a previous iteration of code to test the CSV reading within without classes
+// This is a previous iteration of code to test the CSV reading without classes
 
 
 const fileInput = document.getElementById('csvFile1');

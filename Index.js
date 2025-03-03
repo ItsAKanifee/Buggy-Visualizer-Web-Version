@@ -28,16 +28,18 @@ rate.addEventListener('input', (event) => {
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 
-var pause = false;
+var pause = false; // boolean to check if the animation is paused or not
+var running = false; // boolean to check if the animation has been set to run (different from pause/ resume)
 var i;
 
 function start(){
-	i = 0;
-
-	if(Buggy1.length() == 0 && Buggy2.length() == 0){
+	if((Buggy1.length() == 0 && Buggy2.length() == 0) || running){
 		console.log("no data");
 		return;
 	}
+
+	i = 0;
+	running = true;
 
 	console.log('starting animation'); // testing to see if the function is being called
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clears the canvas before drawing the buggy
@@ -49,20 +51,22 @@ function start(){
 function animate(){
 	console.log(i);
 
-	if(i < Buggy1.length()){
+	if(i < Buggy1.length()){ // only print the points when i is in range of the length of the buggy path
 		Buggy1.animate(i);
 	}
 
-	if(i < Buggy2.length()){
+	if(i < Buggy2.length()){ // only print the points when i is in range of the length of the buggy path
 		Buggy2.animate(i);
 	}
 
 	if(i >= Buggy1.length() && i >= Buggy2.length()){
 		i = 0;
+		running = false;
+		console.log("end of animation");
 		return;
 	}
 
-	if(!pause){
+	if(!pause){ // if the animation is not paused increment by i by 1
 		i++;
 	}
 	
@@ -71,9 +75,16 @@ function animate(){
 }
 
 function stop(){
-	//cancelAnimationFrame(frame);
 	pause = !pause;
-	stopButton.innerHTML = pause ? "Resume" : "Pause";
+	stopButton.innerHTML = pause ? "Resume" : "Pause"; // change the button text to resume if the animation is paused
 }
+
+
+canvas.addEventListener('mousemove', (event) => {
+	const rect = canvas.getBoundingClientRect();
+	const x = event.clientX - rect.left;
+	const y = event.clientY - rect.top;
+	console.log(`Clicked at (${x}, ${y})`); // testing to see if the function is being called
+});
 
 
